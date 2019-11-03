@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 
-class DashboardUser extends Component {
+class ListUser extends Component {
     render() {
         return (
             <div className="container">
@@ -14,24 +14,9 @@ class DashboardUser extends Component {
                                     <h3>Users not like cats</h3>
                                 </div>
                             </div>
-                            <div className="card mb-1 bg-light">
 
-                                <div className="card-header text-primary">
-                                    ID: User
-                            </div>
-                                <div className="card-body bg-light">
-                                    <h5 className="card-title">Username</h5>
-                                    <p className="card-text text-truncate ">
-                                        email@com
-                                </p>
-                                    <a href="#" className="btn btn-primary">
-                                        View / Update
-                                </a>
-                                    <button className="btn btn-danger ml-4">
-                                        Delete
-                                </button>
-                                </div>
-                            </div>
+
+
                         </div>
                         <div className="col-md-4">
                             <div className="card text-center mb-2">
@@ -48,4 +33,4 @@ class DashboardUser extends Component {
     }
 }
 
-export default DashboardUser;
+export default ListUser;

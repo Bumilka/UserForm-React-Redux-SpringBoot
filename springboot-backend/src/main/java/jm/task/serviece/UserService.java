@@ -14,8 +14,8 @@ public class UserService {
 
     public User saveOrUpdateUser(User user){
 
-        if(user.getStatus()==null || user.getStatus()==""){
-            user.setStatus("Form_User");
+        if(user.getFavoriteCat()==null || user.getFavoriteCat()==""){
+            user.setFavoriteCat("Cat");
         }
         return userRepository.save(user);
     }

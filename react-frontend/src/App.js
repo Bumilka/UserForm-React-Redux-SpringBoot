@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from './layout/Navbar';
-import DashboardUser from './pages/DashboardUser';
+import ListUser from './pages/ListUser';
 import AddUser from './pages/AddUser';
 
 import './App.css';
@@ -14,7 +14,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          <Route exact path="/DashboardUser" component={DashboardUser}/>
+          <Route exact path="/listUsers" component={ListUser}/>
           <Route exact path="/addUser" component={AddUser}/>
         </div>
       </Router>

@@ -13,44 +13,61 @@ public class User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Summary cannot be blank")
-    private String summary;
+    @NotBlank(message = "Username cannot be blank")
+    private String username;
+    @NotBlank(message = "Surname cannot be blank")
+    private  String surname;
+    private  String email;
     private String acceptanceCriteria;
-    private String status;
+    private String favoriteCat;
+    private  String textarea;
+    private String sendToEmail;
+
 
     public User() {
     }
 
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getSummary() {
-        return summary;
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) { this.username = username; }
+
+    public String getSurname() {
+        return surname;
+    }
+    public void setSurname(String surname) { this.surname = surname; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public String getAcceptanceCriteria() { return acceptanceCriteria;}
+    public void setAcceptanceCriteria(String acceptanceCriteriaYes) {this.acceptanceCriteria = acceptanceCriteria;}
+
+    public String getFavoriteCat() {
+        return favoriteCat;
+    }
+    public void setFavoriteCat(String favoriteCat) {
+        this.favoriteCat = favoriteCat;
     }
 
-    public void setSummary(String summary) {
-        this.summary = summary;
+    public String getTextarea() {
+        return textarea;
+    }
+    public void setTextarea(String textarea) {
+        this.textarea = textarea;
     }
 
-    public String getAcceptanceCriteria() {
-        return acceptanceCriteria;
+    public String getSendToEmail() {
+        return sendToEmail;
     }
-
-    public void setAcceptanceCriteria(String acceptanceCriteria) {
-        this.acceptanceCriteria = acceptanceCriteria;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setSendToEmail(String sendToEmail) {
+        this.sendToEmail = sendToEmail;
     }
 }
