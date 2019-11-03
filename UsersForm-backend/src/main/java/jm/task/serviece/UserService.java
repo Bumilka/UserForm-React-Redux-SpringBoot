@@ -19,4 +19,15 @@ public class UserService {
         }
         return userRepository.save(user);
     }
+
+    public Iterable<User> findAll(){
+        return  userRepository.findAll();
+    }
+    public  User findById(Long id){
+        return  userRepository.getById(id);
+    }
+    public  void delete(Long id){
+        User user = findById(id);
+        userRepository.delete(user);
+    }
 }

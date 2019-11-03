@@ -40,6 +40,24 @@ public class UserController {
        User newUser = userService.saveOrUpdateUser(user);
 
        return new ResponseEntity<User>(newUser, HttpStatus.CREATED );
-
         }
+
+        @GetMapping("/all")
+        public Iterable<User> getAllUsers(){
+        return userService.findAll();
+        }
+
+        @GetMapping("/{user_id}")
+        public ResponseEntity<?> getUserById(@PathVariable Long user_id){
+        User user = userService.findById(user_id);
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+        }
+
+        @DeleteMapping("/{user_id}")
+        public ResponseEntity<?> deleteUser(@PathVariable Long user_id){
+            userService.delete(user_id);
+
+            return new ResponseEntity<String >("User deleted", HttpStatus.OK);
+        }
+
     }
