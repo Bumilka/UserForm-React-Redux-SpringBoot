@@ -9,29 +9,41 @@ class AddUser extends Component {
             username: "",
             surname: "",
             email: "",
-            acceptanceCriteria: "",
-            favoriteCat: "",
+            selectedOption: "",
+            favoriteCat: "Bengal Cat",
             textarea: "",
-            sendToEmail: ""
+            sendToEmail: "False"
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.radioChange = this.radioChange.bind(this);
+        this.acceptCheckbox = this.acceptCheckbox.bind(this);
     }
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
-    onSubmit(e){
-        e.preventDefault() 
-            const newUser = {
+    onSubmit(e) {
+        e.preventDefault()
+        const newUser = {
             username: this.state.username,
             surname: this.state.surname,
             email: this.state.email,
-            acceptanceCriteria: this.state.acceptanceCriteria,
+            selectedOption: this.state.selectedOption,
             favoriteCat: this.state.favoriteCat,
             textarea: this.state.textarea,
             sendToEmail: this.state.sendToEmail
         };
         console.log(newUser);
+    }
+    radioChange(e) {
+        this.setState({
+            selectedOption: e.currentTarget.value
+        });
+    }
+    acceptCheckbox(e) {
+        this.setState({
+            sendToEmail: e.currentTarget.value
+        });
     }
 
     render() {
@@ -78,24 +90,18 @@ class AddUser extends Component {
                                     <div className="custom-control custom-radio custom-control-inline">
                                         <input
                                             type="radio"
-                                            name="acceptanceCriteria"
-                                            value={this.state.acceptanceCriteria}
-                                            onChange={this.onChange}
-                                            className="custom-control-input"
-                                            id="customRadio"
+                                            value="Yes"
+                                            checked={this.state.selectedOption === "Yes"}
+                                            onChange={this.radioChange}
                                         />
-                                        <label className="custom-control-label" for="customRadio">Yes</label>
-                                    </div>
-                                    <div className="custom-control custom-radio custom-control-inline">
+                                        Yes
                                         <input
                                             type="radio"
-                                            name="acceptanceCriteria"
-                                            value={this.state.acceptanceCriteria}
-                                            onChange={this.onChange}
-                                            className="custom-control-input"
-                                            id="customRadio2"
+                                            value="No"
+                                            checked={this.state.selectedOption === "No"}
+                                            onChange={this.radioChange}
                                         />
-                                        <label className="custom-control-label" for="customRadio2">No</label>
+                                        No
                                     </div>
                                 </div>
                                 <div className="form-group">
@@ -127,11 +133,13 @@ class AddUser extends Component {
                                         <input
                                             type="checkbox"
                                             name="sendToEmail"
-                                            value={this.state.sendToEmail}
-                                            onChange={this.onChange}
+                                            value="True"
+                                            checked={this.state.sendToEmail === "True"}
+                                            onChange={this.acceptCheckbox}
                                             className="custom-control-input"
                                             id="customCheck"
                                         />
+
                                         <label className="custom-control-label" for="customCheck" >Do you want to receive registration email?</label>
                                     </div>
                                 </div>

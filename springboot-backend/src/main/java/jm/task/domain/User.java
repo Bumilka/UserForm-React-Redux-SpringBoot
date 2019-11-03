@@ -18,7 +18,7 @@ public class User{
     @NotBlank(message = "Surname cannot be blank")
     private  String surname;
     private  String email;
-    private String acceptanceCriteria;
+    private String selectedOption;
     private String favoriteCat;
     private  String textarea;
     private String sendToEmail;
@@ -47,8 +47,8 @@ public class User{
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
-    public String getAcceptanceCriteria() { return acceptanceCriteria;}
-    public void setAcceptanceCriteria(String acceptanceCriteriaYes) {this.acceptanceCriteria = acceptanceCriteria;}
+    public String getSelectedOption() { return selectedOption;}
+    public void setSelectedOption(String selectedOption) {this.selectedOption = selectedOption;}
 
     public String getFavoriteCat() {
         return favoriteCat;
