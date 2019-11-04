@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addUserItem } from "../actions/UserActions";
+import classnames from "classnames";
+
+import "../App.css"
 
 
 class AddUser extends Component {
@@ -14,13 +17,20 @@ class AddUser extends Component {
             selectedOption: "",
             favoriteCat: "Bengal Cat",
             textarea: "",
-            sendToEmail: "False"
+            sendToEmail: "False",
+            errors: {}
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.radioChange = this.radioChange.bind(this);
         this.acceptCheckbox = this.acceptCheckbox.bind(this);
     }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({ errors: nextProps.errors })
+        }
+    }
+
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -50,13 +60,13 @@ class AddUser extends Component {
     }
 
     render() {
+        const { errors } = this.state;
         return (
-
             <div className="addUser">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
-                            <h4 className="display-4 text-center">Add /Update User</h4>
+                            <h4 className="display-4 text-center">Add new User</h4>
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     <input
@@ -64,9 +74,16 @@ class AddUser extends Component {
                                         name="username"
                                         value={this.state.username}
                                         onChange={this.onChange}
-                                        className="form-control form-control-lg"
+                                        className={classnames("form-control form-control-lg",{
+                                            "is-invalid": errors.username
+                                        })}
                                         placeholder="Username at least 3 characters"
                                     />
+                                    {
+                                        errors.username && (
+                                            <div className="invalid-feedback">{errors.username}</div>
+                                        )
+                                    }
                                 </div>
                                 <div className="form-group">
                                     <input
@@ -74,9 +91,16 @@ class AddUser extends Component {
                                         name="surname"
                                         value={this.state.surname}
                                         onChange={this.onChange}
-                                        className="form-control form-control-lg"
+                                        className={classnames("form-control form-control-lg",{
+                                            "is-invalid": errors.surname
+                                        })}
                                         placeholder="Surname - must start with 'Dr'"
                                     />
+                                     {
+                                        errors.surname && (
+                                            <div className="invalid-feedback">{errors.surname}</div>
+                                        )
+                                    }
                                 </div>
                                 <div className="form-group">
                                     <input
@@ -84,9 +108,16 @@ class AddUser extends Component {
                                         name="email"
                                         value={this.state.email}
                                         onChange={this.onChange}
-                                        className="form-control form-control-lg"
+                                        className={classnames("form-control form-control-lg",{
+                                            "is-invalid": errors.email
+                                        })}
                                         placeholder="exzample@com"
                                     />
+                                     {
+                                        errors.email && (
+                                            <div className="invalid-feedback">{errors.email}</div>
+                                        )
+                                    }
                                 </div>
                                 <div className="form-group">
                                     <p>Do you like cats?</p>
@@ -127,8 +158,15 @@ class AddUser extends Component {
                                         value={this.state.textarea}
                                         onChange={this.onChange}
                                         placeholder="Answer is not mandatory."
-                                        className="form-control form-control-lg"
+                                        className={classnames("form-control form-control-lg",{
+                                            "is-invalid": errors.textarea
+                                        })}
                                     >
+                                      {
+                                        errors.textarea && (
+                                            <div className="invalid-feedback">{errors.textarea}</div>
+                                        )
+                                    }
                                     </textarea>
                                 </div>
                                 <div className="form-group">
@@ -142,7 +180,6 @@ class AddUser extends Component {
                                             className="custom-control-input"
                                             id="customCheck"
                                         />
-
                                         <label className="custom-control-label">Do you want to receive registration email?</label>
                                     </div>
                                 </div>
