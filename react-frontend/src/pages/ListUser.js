@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getUserList } from "../actions/UserActions";
+import UserItem from "../components/UserItem";
 
 
 
@@ -11,28 +12,60 @@ class ListUser extends Component {
         this.props.getUserList();
     }
     render() {
+        const { users } = this.props.users;
+
+        let ListUserContent;
+        let userLikeCats = [];
+        let userDontLikeCats = [];
+
+        const SearchUser = users => {
+            if (users.length < 1) {
+                return (
+                    <div className="alert alert-info tex-center" role="alert">
+                        No User on this board
+                    </div>
+                )
+            } else {
+                const profils = users.map(user => (
+                    <UserItem  key={user.id} user={user} />
+                ));
+
+                for (let i = 0; i < users.length; i++) {
+                    if (profils[i].props.user.selectedOption === "Yes") {
+                        userLikeCats.push(profils[i]);
+                    }
+                    if (profils[i].props.user.selectedOption === "No") {
+                        userDontLikeCats.push(profils[i]);
+                    }
+                }
+            }
+        };
+        
+        SearchUser(users);
+       
+
         return (
             <div className="container">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-4">
-                            <div className="card text-center mb-2">
+                        <div className="col-md-6">
+                            <div className="card text-center mb-3">
                                 <div className="card-header bg-secondary text-white">
-                                    <h3>Users not like cats</h3>
+                                    <h3>Users who don't like cats</h3>
                                 </div>
                             </div>
-
-
-
+                            {userLikeCats}
                         </div>
-                        <div className="col-md-4">
-                            <div className="card text-center mb-2">
+
+                        <div className="col-md-6">
+                            <div className="card text-center mb-3">
                                 <div className="card-header bg-success text-white">
-                                    <h3>Users like cats</h3>
+                                    <h3>Users who like cats</h3>
                                 </div>
                             </div>
-
+                            {userDontLikeCats}
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -49,7 +82,7 @@ const mapStateToProps = state => ({
     users: state.user
 });
 
-export default connect
-    (mapStateToProps,
-        { getUserList })
-    (ListUser);
+export default connect(
+    mapStateToProps,
+    { getUserList }
+)(ListUser);
