@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
+
 import Navbar from './layout/Navbar';
 import ListUser from './pages/ListUser';
 import AddUser from './pages/AddUser';
@@ -16,7 +17,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Navbar />
+            <Navbar/>
             <Route exact path="/listUsers" component={ListUser} />
             <Route exact path="/addUser" component={AddUser} />
           </div>

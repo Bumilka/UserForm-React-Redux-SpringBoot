@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { addUserItem } from "../actions/UserActions";
 
 
 class AddUser extends Component {
@@ -33,7 +35,8 @@ class AddUser extends Component {
             textarea: this.state.textarea,
             sendToEmail: this.state.sendToEmail
         };
-        console.log(newUser);
+        // console.log(newUser);
+        this.props.addUserItem(newUser, this.props.history)
     }
     radioChange(e) {
         this.setState({
@@ -140,7 +143,7 @@ class AddUser extends Component {
                                             id="customCheck"
                                         />
 
-                                        <label className="custom-control-label" for="customCheck" >Do you want to receive registration email?</label>
+                                        <label className="custom-control-label">Do you want to receive registration email?</label>
                                     </div>
                                 </div>
                                 <button type="submit" className="btn btn-primary btn-block mt-4">SUBMIT</button>
@@ -150,10 +153,17 @@ class AddUser extends Component {
                 </div>
 
             </div>
-
-
         );
     }
 }
 
-export default AddUser;
+AddUser.protoTypes = {
+    addUserItem: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+    errors: state.errors
+})
+
+export default connect(mapStateToProps, { addUserItem })(AddUser);
