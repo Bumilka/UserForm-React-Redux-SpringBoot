@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getUserList } from "../actions/UserActions";
 
 
 
 class ListUser extends Component {
+
+    componentDidMount() {
+        this.props.getUserList();
+    }
     render() {
         return (
             <div className="container">
@@ -33,4 +40,16 @@ class ListUser extends Component {
     }
 }
 
-export default ListUser;
+ListUser.propTypes = {
+    getUserList: PropTypes.func.isRequired,
+    users: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    users: state.user
+});
+
+export default connect
+    (mapStateToProps,
+        { getUserList })
+    (ListUser);
