@@ -33,7 +33,7 @@ export const deleteUser = user_id => async dispatch => {
   
     if (
       window.confirm(
-        `Do you want to delete user ${user_id}`
+        `Do you want to delete user: ${user_id}`
       )
     ) {
       await axios.delete(`http://localhost:8080/api/board/${user_id}`);

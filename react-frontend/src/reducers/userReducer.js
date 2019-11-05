@@ -15,7 +15,6 @@ export default function (state = initialState, action) {
                 ...state,
                 users: action.payload
             };
-            /*
                 case DELETE_USER:
                     return{
                         ...state,
@@ -23,7 +22,7 @@ export default function (state = initialState, action) {
                             user => user.id !== action.payload
                         )
                     };
-                       */
+                       
         default:
             return state;
     }

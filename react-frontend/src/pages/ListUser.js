@@ -27,7 +27,7 @@ class ListUser extends Component {
                 )
             } else {
                 const profils = users.map(user => (
-                    <UserItem  key={user.id} user={user} />
+                    <UserItem key={user.id} user={user} />
                 ));
 
                 for (let i = 0; i < users.length; i++) {
@@ -38,36 +38,40 @@ class ListUser extends Component {
                         userDontLikeCats.push(profils[i]);
                     }
                 }
+                return (
+                    <React.Fragment>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="card text-center mb-3">
+                                        <div className="card-header bg-secondary text-white">
+                                            <h3>Users who don't like cats</h3>
+                                        </div>
+                                    </div>
+                                    {userLikeCats}
+                                </div>
+
+                                <div className="col-md-6">
+                                    <div className="card text-center mb-3">
+                                        <div className="card-header bg-success text-white">
+                                            <h3>Users who like cats</h3>
+                                        </div>
+                                    </div>
+                                    {userDontLikeCats}
+                                </div>
+
+                            </div>
+                        </div>
+                    </React.Fragment>
+                )
             }
         };
-        
-        SearchUser(users);
-       
+
+        ListUserContent = SearchUser(users);
 
         return (
             <div className="container">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="card text-center mb-3">
-                                <div className="card-header bg-secondary text-white">
-                                    <h3>Users who don't like cats</h3>
-                                </div>
-                            </div>
-                            {userLikeCats}
-                        </div>
-
-                        <div className="col-md-6">
-                            <div className="card text-center mb-3">
-                                <div className="card-header bg-success text-white">
-                                    <h3>Users who like cats</h3>
-                                </div>
-                            </div>
-                            {userDontLikeCats}
-                        </div>
-
-                    </div>
-                </div>
+                {ListUserContent}
             </div>
         );
     }
