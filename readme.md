@@ -1,3 +1,5 @@
+# User Form App with React, Redux and SpringBoot
+
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
@@ -5,12 +7,12 @@
 
 ## General info
 
-# Frontend: 
+### Frontend: 
 * Application with a form.
 * Subpages: Register new user, List showing all registered users.
 
 
-# Backend:
+### Backend:
 * The backend uses Java, based on SpringBoot framework.
 * The database is integrated with the application H2.
 * Registered user's data are stored on backend's side and read from there.
