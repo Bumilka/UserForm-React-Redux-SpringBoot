@@ -12,7 +12,6 @@ Full Stack app with frontend and backend boards.
 * Application with a form.
 * Subpages: Register new user, List showing all registered users.
 
-
 #### Backend:
 * The backend uses Java, based on SpringBoot framework.
 * The database is integrated with the application H2.
@@ -24,12 +23,14 @@ Full Stack app with frontend and backend boards.
 Project is created with:
 * React App
 * Spring Boot
-* Bootstrap: version 4.1.3
 	
 ## Setup
 
-* Backend:
-To run this project, install it locally using IntelliJ IDEA <https://www.jetbrains.com/idea/>
+### Backend:
+* To run this project, install it locally using IntelliJ IDEA <https://www.jetbrains.com/idea/>
+* Open backend folder in IntelliJ IDEA
+* Run UserFormApplication
+* Open on your browser: http://localhost:8080/h2-console/login
 
 * Frontend: 
 To run this project, install it locally using npm:
@@ -38,5 +39,5 @@ $ git clone https://github.com/Bumilka/UserForm-React-Redux-SpringBoot.git
 $ cd UserForm-React-Redux-SpringBoot
 $ npm install
 $ code .
-npm start
+$ npm start
 ```
