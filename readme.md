@@ -28,11 +28,11 @@ Project is created with:
 
 ### Backend:
 * To run this project, install it locally using IntelliJ IDEA <https://www.jetbrains.com/idea/>
-* Open backend folder in IntelliJ IDEA
+* Open backend's folder in IntelliJ IDEA
 * Run UserFormApplication
 * Open on your browser: http://localhost:8080/h2-console/login
 
-## Frontend: 
+### Frontend: 
 To run this project, install it locally using npm:
 ```
 $ git clone https://github.com/Bumilka/UserForm-React-Redux-SpringBoot.git
