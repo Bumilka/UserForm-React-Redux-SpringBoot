@@ -6,13 +6,14 @@
 * [Setup](#setup)
 
 ## General info
+Full Stack app with frontend and backend boards.
 
-### Frontend: 
+#### Frontend: 
 * Application with a form.
 * Subpages: Register new user, List showing all registered users.
 
 
-### Backend:
+#### Backend:
 * The backend uses Java, based on SpringBoot framework.
 * The database is integrated with the application H2.
 * Registered user's data are stored on backend's side and read from there.
@@ -23,6 +24,7 @@
 Project is created with:
 * React App
 * Spring Boot
+* Bootstrap: version 4.1.3
 	
 ## Setup
 
